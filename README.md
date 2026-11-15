@@ -4,6 +4,8 @@
 
 **Product:** ask a question about a company, get an answer with exact numbers and a link to the source page.
 
+**Status:** in progress. The report downloader works and has fetched Apple's 2026 annual report from the SEC. Next: parsing the report into clean text.
+
 ## Architecture
 
 ```mermaid
@@ -38,6 +40,12 @@ Purple = product, teal = measurement.
 ## Build order
 
 - [ ] 1. RAG — everything else plugs into it
+  - [x] Load: download the report ([report downloader](src/report_downloader/))
+  - [ ] Parse: HTML to clean text with section labels ← next
+  - [ ] Chunk: split text into passages
+  - [ ] Embed: turn passages into vectors
+  - [ ] Retrieve: find the passages closest to a question
+  - [ ] Answer: LLM writes the answer, citing its passages
 - [ ] 2. Eval harness (small version) — scores before improvements
 - [ ] 3. Fine-tuned retriever (3a)
 - [ ] 4. Numbers database + question-to-SQL (3b)
@@ -48,13 +56,15 @@ Purple = product, teal = measurement.
 
 ```
 earning-analysis/
-├── pyproject.toml   ← dependencies, installed with uv
-├── requirements.txt ← same dependencies, for pip
+├── pyproject.toml          ← dependencies, installed with uv
+├── requirements.txt        ← same dependencies, for pip
 ├── src/
-│   ├── report_downloader/ ← gets annual reports from the SEC
-│   └── rag/         ← part 1 code + its README
-├── notebooks/       ← Colab notebooks that run src/
-└── data/            ← sample filings
+│   ├── report_downloader/  ← gets annual reports from the SEC
+│   └── rag/                ← part 1 code
+├── notebooks/
+│   └── 01_fetch_report.ipynb  ← runs the downloader on Colab
+└── data/
+    └── AAPL/               ← Apple's reports
 ```
 
 Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
@@ -88,7 +98,9 @@ uv export --no-hashes -o requirements.txt
 ## Decisions
 
 - Code runs on Google Colab (free tier)
-- Dependencies are managed with uv
+- Dependencies are managed with uv, with a generated `requirements.txt` for pip
+- Downloaded reports are kept in GitHub, under `data/`
+- Each part documents itself with a README in its own folder
 - Companies: Apple first, then Nvidia, then Siemens
 
 ## Open decisions

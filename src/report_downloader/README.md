@@ -2,12 +2,22 @@
 
 **Problem:** before we can answer questions about a company, we need its annual report, and we need to be sure the company exists and the report is available.
 
+**Status:** working. Run against the real SEC, it fetched Apple's annual report for fiscal year 2026 (filed 2026-11-03).
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeedashrraf/earning-analysis/blob/main/notebooks/01_fetch_report.ipynb)
+
 ## Usage
 
 ```
 python src/report_downloader/fetch_report.py AAPL
 python src/report_downloader/fetch_report.py Apple --date 2024-06-30
 python src/report_downloader/fetch_report.py NVDA --date 2024
+```
+
+Example output:
+
+```
+Saved Apple Inc. 10-K (filed 2026-11-03) to data/AAPL/10-K_2026-11-03.htm
 ```
 
 - No date: the newest annual report (10-K).
