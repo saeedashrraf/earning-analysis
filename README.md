@@ -8,17 +8,17 @@
 
 ```mermaid
 flowchart TD
-    Q[User question] --> A["4. Agent + MCP server<br/>Plans steps, fetches data"]
+    Q[User question] --> A["2. Agent + MCP server<br/>Plans steps, fetches data"]
     A --> R["1. RAG<br/>Cited filing answers"]
-    A --> S["3b. Question-to-SQL<br/>Exact number lookup"]
-    FT["3a. Fine-tuned retriever<br/>Finance-aware search"] -.improves.-> R
-    R --> E["2. Eval harness<br/>Scores every part"]
-    FT --> E
-    S --> E
+    A --> L["3. LoRA model<br/>Tags tone cheaply"]
+    A --> M["4. Mini transformer<br/>From-scratch baseline"]
+    R --> E["5. Eval harness<br/>Scores every part"]
+    L --> E
+    M --> E
 
     classDef product fill:#EEEDFE,stroke:#534AB7,color:#3C3489
     classDef measure fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    class A,R,S,FT product
+    class A,R,L,M product
     class E measure
 ```
 
