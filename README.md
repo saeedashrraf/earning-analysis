@@ -44,18 +44,31 @@ Purple = product, teal = measurement.
 - [ ] 5. Agent + MCP server
 - [ ] 6. Mini transformer — side project, any time
 
-## Detail docs (to be written, one per part)
+## Project structure
 
-- `docs/1-rag.md`
-- `docs/2-eval-harness.md`
-- `docs/3a-retriever.md`
-- `docs/3b-text-to-sql.md`
-- `docs/4-agent-mcp.md`
+```
+earning-analysis/
+├── pyproject.toml   ← dependencies, installed with uv
+├── src/
+│   └── rag/         ← part 1 code + its README
+├── notebooks/       ← Colab notebooks that run src/
+└── data/            ← sample filings
+```
 
-Each one covers: the problem, how the system works, a diagram, and results.
+Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
+
+## Setup
+
+```
+uv sync
+```
+
+## Decisions
+
+- Code runs on Google Colab (free tier)
+- Dependencies are managed with uv
 
 ## Open decisions
 
-- Where the code runs (own machine, GPU or not, or Colab)
 - Which companies and years to cover
 - Which models to use

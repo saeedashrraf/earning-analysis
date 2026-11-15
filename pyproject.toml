@@ -1,0 +1,10 @@
+[project]
+name = "earning-analysis"
+version = "0.1.0"
+description = "Ask questions about company filings and get cited answers."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
