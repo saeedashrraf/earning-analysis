@@ -8,11 +8,11 @@
 
 ```mermaid
 flowchart TD
-    Q[User question] --> A["2. Agent + MCP server<br/>Plans steps, fetches data"]
+    Q[User question] --> A["4. Agent + MCP server<br/>Plans steps, fetches data"]
     A --> R["1. RAG<br/>Cited filing answers"]
-    A --> L["3. LoRA model<br/>Tags tone cheaply"]
-    A --> M["4. Mini transformer<br/>From-scratch baseline"]
-    R --> E["5. Eval harness<br/>Scores every part"]
+    A --> L["3a. Fine-tuned retriever<br/>Sharper search for RAG"]
+    A --> M["3b. Question-to-SQL<br/>Exact number lookup"]
+    R --> E["2. Eval harness<br/>Scores every part"]
     L --> E
     M --> E
 
