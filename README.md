@@ -49,6 +49,7 @@ Purple = product, teal = measurement.
 ```
 earning-analysis/
 ├── pyproject.toml   ← dependencies, installed with uv
+├── requirements.txt ← same dependencies, for pip
 ├── src/
 │   └── rag/         ← part 1 code + its README
 ├── notebooks/       ← Colab notebooks that run src/
@@ -59,8 +60,22 @@ Each part's folder has its own `README.md` covering the problem, the class struc
 
 ## Setup
 
+With uv:
+
 ```
 uv sync
+```
+
+With pip (used on Colab):
+
+```
+pip install -r requirements.txt
+```
+
+`requirements.txt` is generated from `pyproject.toml`. After changing dependencies, refresh it with:
+
+```
+uv export --no-hashes -o requirements.txt
 ```
 
 ## Decisions
