@@ -59,6 +59,12 @@ earning-analysis/
 
 Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
 
+## Run it on Colab
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saeedashrraf/earning-analysis/blob/main/notebooks/01_fetch_report.ipynb)
+
+`notebooks/01_fetch_report.ipynb` downloads a company's annual report.
+
 ## Setup
 
 With uv:
