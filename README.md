@@ -51,6 +51,7 @@ earning-analysis/
 ├── pyproject.toml   ← dependencies, installed with uv
 ├── requirements.txt ← same dependencies, for pip
 ├── src/
+│   ├── report_downloader/ ← gets annual reports from the SEC
 │   └── rag/         ← part 1 code + its README
 ├── notebooks/       ← Colab notebooks that run src/
 └── data/            ← sample filings
@@ -82,8 +83,8 @@ uv export --no-hashes -o requirements.txt
 
 - Code runs on Google Colab (free tier)
 - Dependencies are managed with uv
+- Companies: Apple first, then Nvidia, then Siemens
 
 ## Open decisions
 
-- Which companies and years to cover
 - Which models to use
