@@ -1,0 +1,13 @@
+[
+  {
+    "ticker": "SIEGY",
+    "title": "Siemens AG",
+    "reports": {
+      "2025-12-03": "https://assets.new.siemens.com/siemens/assets/api/uuid:428ea18a-e7ab-4f93-a160-33908f1c3540/Siemens-Annual-Report-2025.pdf",
+      "2024-12-04": "https://assets.new.siemens.com/siemens/assets/api/uuid:344347ec-a1bd-44cb-aaaa-711d1b3ec1b8/Siemens-Annual-Report-2024.pdf",
+      "2023-12-06": "https://assets.ctfassets.net/17si5cpawjzf/75NjPd0MkpOq6dkbksOUYX/2d0b2a1263c51e853fcdfc91025dda82/Siemens-Annual-Report-2023.pdf",
+      "2022-12-15": "https://assets.ctfassets.net/17si5cpawjzf/2OlK51tFTifwxVlYAh3Do2/41152408ccdf2c3efeca49f5170b31d7/Siemens-Annual-Report-2022.pdf",
+      "2021-12-06": "https://assets.ctfassets.net/17si5cpawjzf/6XxK1XVHXisMaxRS2HcmGZ/2492f75bb45a6b7e085661643277d41b/siemens-ar-2021.pdf"
+    }
+  }
+]
