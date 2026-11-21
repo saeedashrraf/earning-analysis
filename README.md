@@ -103,7 +103,7 @@ uv export --no-hashes -o requirements.txt
 - Dependencies are managed with uv, with a generated `requirements.txt` for pip
 - Downloaded reports are kept in GitHub, under `data/`
 - Each part documents itself with a README in its own folder
-- Companies: Apple, Amazon and Siemens
+- Companies: Apple, Amazon and Siemens so far, Nvidia to follow
 
 ## Open decisions
 
