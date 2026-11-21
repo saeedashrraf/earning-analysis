@@ -135,7 +135,7 @@ def label_sections(blocks: list[dict]) -> list[dict]:
     return labeled
 
 
-def save_reports(blocks: list[dict], file: Path) -> Path:
+def save_reports(blocks: list[dict], file: Path, core_sections: list[str]) -> Path:
     """Write full_report.jsonl (every block) and core_report.jsonl (core sections only)."""
     company = file.parent.name            # data/AAPL/10-K_2026-11-03.htm -> AAPL
     report_date = file.stem.split("_")[-1]  # -> 2026-11-03
@@ -145,7 +145,7 @@ def save_reports(blocks: list[dict], file: Path) -> Path:
     # Labels first and text last, so each line reads like a citation plus its content
     keys = ["section", "section_title", "sub_heading", "page", "type", "text"]
     blocks = [{"company": company, **{key: block[key] for key in keys}} for block in blocks]
-    core = [block for block in blocks if block["section"] in CORE_SECTIONS]
+    core = [block for block in blocks if block["section"] in core_sections]
     for name, rows in (("full_report.jsonl", blocks), ("core_report.jsonl", core)):
         lines = [json.dumps(row, ensure_ascii=False) for row in rows]
         (folder / name).write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -161,7 +161,7 @@ def main() -> None:
     blocks = html_to_blocks(file)
     blocks = label_pages(blocks)
     blocks = label_sections(blocks)
-    folder = save_reports(blocks, file)
+    folder = save_reports(blocks, file, CORE_SECTIONS)
     print(f"Output folder: {folder}")
 
 
