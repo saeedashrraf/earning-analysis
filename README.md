@@ -65,6 +65,7 @@ earning-analysis/
 │   └── 01_fetch_report.ipynb  ← runs the downloader on Colab
 └── data/
     ├── AAPL/               ← Apple's report and its parsed blocks
+    ├── AMZN/               ← Amazon's report and its parsed blocks
     └── SIEGY/              ← Siemens' report
 ```
 
@@ -102,7 +103,7 @@ uv export --no-hashes -o requirements.txt
 - Dependencies are managed with uv, with a generated `requirements.txt` for pip
 - Downloaded reports are kept in GitHub, under `data/`
 - Each part documents itself with a README in its own folder
-- Companies: Apple first, then Nvidia, then Siemens
+- Companies: Apple, Amazon and Siemens so far, Nvidia to follow
 
 ## Open decisions
 
