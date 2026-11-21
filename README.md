@@ -4,7 +4,7 @@
 
 **Product:** ask a question about a company, get an answer with exact numbers and a link to the source page.
 
-**Status:** in progress. Annual reports can be downloaded for SEC companies (Apple) and others (Siemens), and 10-K reports are parsed into labeled blocks. Next: parsing Siemens' PDF report.
+**Status:** in progress. Annual reports can be downloaded for SEC companies (Apple, Amazon) and others (Siemens), and both 10-K and PDF reports are parsed into labeled blocks. Next: chunking the blocks for search.
 
 ## Architecture
 
@@ -41,8 +41,8 @@ Purple = product, teal = measurement.
 
 - [ ] 1. RAG — everything else plugs into it
   - [x] Load: download the report ([report downloader](src/report_downloader/))
-  - [ ] Parse: report to labeled blocks ([details](src/rag/)) — 10-K done, PDF next
-  - [ ] Chunk: split text into passages
+  - [x] Parse: report to labeled blocks, for 10-K and PDF reports ([details](src/rag/))
+  - [ ] Chunk: group blocks into pieces sized for search ← next
   - [ ] Embed: turn passages into vectors
   - [ ] Retrieve: find the passages closest to a question
   - [ ] Answer: LLM writes the answer, citing its passages
@@ -60,13 +60,13 @@ earning-analysis/
 ├── requirements.txt        ← same dependencies, for pip
 ├── src/
 │   ├── report_downloader/  ← gets annual reports from the SEC
-│   └── rag/                ← part 1 code: the parser so far
+│   └── rag/                ← part 1 code: the two parsers so far
 ├── notebooks/
 │   └── 01_fetch_report.ipynb  ← runs the downloader on Colab
 └── data/
     ├── AAPL/               ← Apple's report and its parsed blocks
     ├── AMZN/               ← Amazon's report and its parsed blocks
-    └── SIEGY/              ← Siemens' report
+    └── SIEGY/              ← Siemens' report and its parsed blocks
 ```
 
 Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
@@ -103,7 +103,7 @@ uv export --no-hashes -o requirements.txt
 - Dependencies are managed with uv, with a generated `requirements.txt` for pip
 - Downloaded reports are kept in GitHub, under `data/`
 - Each part documents itself with a README in its own folder
-- Companies: Apple, Amazon and Siemens so far, Nvidia to follow
+- Companies: Apple, Amazon and Siemens
 
 ## Open decisions
 
