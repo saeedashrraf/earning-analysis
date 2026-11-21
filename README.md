@@ -4,7 +4,7 @@
 
 **Product:** ask a question about a company, get an answer with exact numbers and a link to the source page.
 
-**Status:** in progress. The report downloader works and has fetched Apple's 2026 annual report from the SEC. Next: parsing the report into clean text.
+**Status:** in progress. Annual reports can be downloaded for SEC companies (Apple) and others (Siemens), and 10-K reports are parsed into labeled blocks. Next: parsing Siemens' PDF report.
 
 ## Architecture
 
@@ -41,7 +41,7 @@ Purple = product, teal = measurement.
 
 - [ ] 1. RAG — everything else plugs into it
   - [x] Load: download the report ([report downloader](src/report_downloader/))
-  - [ ] Parse: HTML to clean text with section labels ← next
+  - [ ] Parse: report to labeled blocks ([details](src/rag/)) — 10-K done, PDF next
   - [ ] Chunk: split text into passages
   - [ ] Embed: turn passages into vectors
   - [ ] Retrieve: find the passages closest to a question
@@ -60,11 +60,12 @@ earning-analysis/
 ├── requirements.txt        ← same dependencies, for pip
 ├── src/
 │   ├── report_downloader/  ← gets annual reports from the SEC
-│   └── rag/                ← part 1 code
+│   └── rag/                ← part 1 code: the parser so far
 ├── notebooks/
 │   └── 01_fetch_report.ipynb  ← runs the downloader on Colab
 └── data/
-    └── AAPL/               ← Apple's reports
+    ├── AAPL/               ← Apple's report and its parsed blocks
+    └── SIEGY/              ← Siemens' report
 ```
 
 Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
