@@ -66,7 +66,8 @@ earning-analysis/
 └── data/
     ├── AAPL/               ← Apple's report and its parsed blocks
     ├── AMZN/               ← Amazon's report and its parsed blocks
-    └── SIEGY/              ← Siemens' report
+    ├── AMZN/               ← Amazon's report and its parsed blocks
+
 ```
 
 Each part's folder has its own `README.md` covering the problem, the class structure, and what each component does. Folders for the other parts are added as we build them.
